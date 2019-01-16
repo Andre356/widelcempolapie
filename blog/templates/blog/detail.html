@@ -1,1 +1,32 @@
-{{ dish.name }}
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="album py-1 bg-light">
+    <div class="container">
+
+        <div class="row">
+            <div class="col-sm-6">
+                <h2>{{ dish.name }}</h2>
+                <p class="font-weight-light">{{ dish.dateformat }}</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6"><img src="{{ dish.photo0.url }}" class="img-fluid"></div>
+            <div class="col-sm-6">
+                <h5>Składniki:</h5>
+                <p class="font-italic">{{ dish.portions }} porcje </p>
+                <p>{{ dish.ingredients|linebreaks }}</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                <p/>
+                <h5>Przepis:</h5>
+                <p>{{ dish.description|linebreaks }}</p>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+{% endblock %}

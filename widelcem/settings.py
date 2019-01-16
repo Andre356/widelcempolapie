@@ -55,7 +55,7 @@ ROOT_URLCONF = 'widelcem.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['widelcem/templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
