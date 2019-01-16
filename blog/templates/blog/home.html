@@ -1,23 +1,31 @@
 {% extends 'base.html' %}
 {% block content %}
-
+<style>
+    a.card,
+    a.card:hover {
+    color: pink;
+    text-decoration: none;
+    }
+</style>
 
     <div class="album py-5 bg-light">
         <div class="container">
             <div class="row">
 
                 {% for danie in dania.all %}
-                <div class="col-sm-3">
-                    <div class="card-column">
-                        <div class="card text-center">
+
+                <div class="col-sm-3 text-center">
+                    <a href="{% url 'detail' danie.id %}" class="card-columns">
+                        <div class="card">
                             <div class="card-body text-center">
-                                <h6 class="card-text">{{ danie.name }}</h6>
-                                <p class="card-text"><small class="text-muted">{{ danie.dateformat }}</small></p>
+                                <h6 class="card-text" style="color:Black;">{{ danie.name }}</h6>
+                                <!--          <p class="card-text"><small class="text-muted">{{ danie.dateformat }}</small></p> -->
                             </div>
+                            <img class="card-img-bottom img-fluid rounded-bottom" src="{{ danie.photo0.url }}">
                         </div>
-                        <img class="card-img-bottom img-fluid" src="{{ danie.photo0.url }}">
-                    </div>
+                    </a>
                 </div>
+
                 {% endfor %}
 
             </div>
