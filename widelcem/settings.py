@@ -55,7 +55,7 @@ ROOT_URLCONF = 'widelcem.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['widelcem/templates'],
+        'DIRS': ['widelcem/templates', 'blog/templates/blog'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -125,3 +125,6 @@ MEDIA_URL = '/media/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'widelcem/static/')]
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATIC_URL = '/static/'
+
+# redirection after LogIn
+LOGIN_REDIRECT_URL = '/'
