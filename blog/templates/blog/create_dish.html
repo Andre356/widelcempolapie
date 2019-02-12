@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+<div class="container">
+    <!--enctype ogarnie pliki-->
+    <!--novalidate prevents the browser from "validating" the data before submitting to the server-->
+    <form method="POST" enctype="multipart/form-data" novalidate>
+        <div class="form-group row">
+            {% csrf_token %}
+
+            <div class="form-group row">
+                <!--DRY solution for templates form :) -->
+                {% include 'template-form.html' %}
+                <button type="submit" class="btn btn-success">Save</button>
+            </div>
+
+        </div>
+    </form>
+</div>
+
+
+
+
+
+{% endblock %}

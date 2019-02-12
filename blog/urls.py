@@ -1,10 +1,10 @@
 from django.urls import path
-from . import views
-from .views import HomePageView, DetailDishView
+from .views import HomePageView, DetailDishView, CreateDishView, UpdateDishView, DeleteDishView
 
 urlpatterns = [
-    #path('', views.home, name='home'),
     path('', HomePageView.as_view(), name='home'),
-    #path('<int:dish_id>/', views.detail, name='detail'),
     path('<int:pk>/', DetailDishView.as_view(), name='detail'),
+    path('create/', CreateDishView.as_view(), name='dish-create'),
+    path('update/<int:pk>/', UpdateDishView.as_view(), name='dish-update'),
+    path('delete/<int:pk>/', DeleteDishView.as_view(), name='dish-delete'),
 ]

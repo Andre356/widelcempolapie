@@ -1,20 +1,8 @@
 from django.shortcuts import render, get_object_or_404
 from .models import Dish
-from django.views.generic.list import ListView
-from django.views.generic.detail import DetailView
+from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.utils import timezone
-
-
-# function based views
-#
-# def home(request):
-#     dania = Dish.objects.order_by('-added')[:8]
-#     return render(request, 'blog/home.html', {'dania': dania})
-
-
-# def detail(request, dish_id):
-#     detail_dish = get_object_or_404(Dish, pk=dish_id)
-#     return render(request, 'blog/detail.html', {'dish': detail_dish})
+from django.urls import reverse_lazy
 
 
 # Class Based Views
@@ -27,7 +15,6 @@ class HomePageView(ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['now'] = timezone.now()
-        #context['dania'] = Dish.objects.order_by('-added')[:8]
         return context
 
 
@@ -38,3 +25,22 @@ class DetailDishView(DetailView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         return context
+
+
+class CreateDishView(CreateView):
+    template_name = 'blog/create_dish.html'
+    fields = (
+        'name', 'portions', 'ingredients', 'description', 'added', 'photo0', 'photo1', 'photo2', 'rating', 'thermomix')
+    model = Dish
+
+
+class UpdateDishView(UpdateView):
+    template_name = 'blog/create_dish.html'
+    fields = (
+        'name', 'portions', 'ingredients', 'description', 'added', 'photo0', 'photo1', 'photo2', 'rating', 'thermomix')
+    model = Dish
+
+
+class DeleteDishView(DeleteView):
+    model = Dish
+    success_url = reverse_lazy('home')

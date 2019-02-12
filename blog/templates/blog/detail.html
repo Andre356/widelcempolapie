@@ -5,11 +5,30 @@
     <div class="container">
 
         <div class="row">
-            <div class="col-sm-12 text-center pb-4">
-                <h2 class="font-italic">{{ dish.name }}</h2>
- <!--               <p class="font-weight-light">{{ dish.dateformat }}</p>  -->
+            <div class="col-sm-10 text-center pb-4">
+                <h2 class="dish_name">{{ dish.name }}</h2>
+                <!-- <p class="font-weight-light">{{ dish.dateformat }}</p>  -->
+            </div>
+            <div class="col-sm-2 text-center pb-4">
+                <!-- Delete -->
+                <form action="{% url 'dish-delete' dish.id %}" method="post" style="display: inline;">
+                    {% csrf_token %}
+                    <input type="hidden" name="name" value="{{ dish.id }}">
+                    <button type="submit" class="btn btn-light" title="Usuń">
+                        <i class="material-icons md-48">delete_forever</i>
+                    </button>
+                </form>
+                <!-- Update -->
+                <form action="{% url 'dish-update' dish.id %}" method="get" style="display: inline;">
+                    {% csrf_token %}
+                    <input type="hidden" name="name" value="{{ dish.id }}">
+                    <button type="submit" class="btn btn-light" title="Edytuj">
+                        <i class="material-icons md-48">edit</i>
+                    </button>
+                </form>
             </div>
         </div>
+
         <div class="row">
             <div class="col-sm-6"><img src="{{ dish.photo0.url }}" class="img-fluid rounded"></div>
             <div class="col-sm-6">
