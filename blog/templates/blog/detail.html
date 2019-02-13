@@ -14,7 +14,7 @@
                 <form action="{% url 'dish-delete' dish.id %}" method="post" style="display: inline;">
                     {% csrf_token %}
                     <input type="hidden" name="name" value="{{ dish.id }}">
-                    <button type="submit" class="btn btn-light" title="Usuń">
+                    <button type="submit" class="btn btn-light" data-toggle="tooltip" data-placement="top" title="Usuń">
                         <i class="material-icons md-48">delete_forever</i>
                     </button>
                 </form>
@@ -22,7 +22,7 @@
                 <form action="{% url 'dish-update' dish.id %}" method="get" style="display: inline;">
                     {% csrf_token %}
                     <input type="hidden" name="name" value="{{ dish.id }}">
-                    <button type="submit" class="btn btn-light" title="Edytuj">
+                    <button type="submit" class="btn btn-light" data-toggle="tooltip" data-placement="top" title="Edytuj">
                         <i class="material-icons md-48">edit</i>
                     </button>
                 </form>

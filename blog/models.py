@@ -8,8 +8,8 @@ class Dish(models.Model):
     portions = models.IntegerField(default=2, null=True, blank=True)
     ingredients = models.TextField(default="", null=True, blank=True)
     description = models.TextField(default="", null=True, blank=True)
-    added = models.DateField(null=True, blank=True)                       # blank działa na rekordy w db
-    photo0 = models.ImageField(upload_to='images/', null=True, blank=True)
+    added = models.DateField(null=False, blank=True, default=timezone.now)   # blank działa na rekordy w db
+    photo0 = models.ImageField(upload_to='images/', null=False, blank=True, default='images/000empty.jpg')
     photo1 = models.ImageField(upload_to='images/', null=True, blank=True)
     photo2 = models.ImageField(upload_to='images/', null=True, blank=True)
     rating = models.IntegerField(default=0)
